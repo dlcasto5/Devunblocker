@@ -42,5 +42,25 @@ function isValidUrl(url) {
     return !!pattern.test(url);
 }
 
-// Example usage
-unblockWebsite("https://example.com");
+// Function to perform a Google search
+function googleSearch(query) {
+    if (!query) {
+    console.error("Query cannot be empty");
+    return;
+    }
+    const baseUrl = "https://www.google.com/search?q=";
+    const searchUrl = baseUrl + encodeURIComponent(query);
+    window.open(searchUrl, "_blank");
+}
+
+// Handle the search button click
+    function handleSearch() {
+    const input = document.getElementById('searchInput').value;
+    googleSearch(input);
+}
+
+// Handle the unblock button click
+    function handleUnblock() {
+    const input = document.getElementById('searchInput').value;
+    unblockWebsite(input)
+}
