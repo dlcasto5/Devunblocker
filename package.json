@@ -1,0 +1,16 @@
+{
+  "name": "search-or-unblock",
+  "version": "1.0.0",
+  "description": "A simple web app to search Google or unblock websites.",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server" // Or your preferred server command
+  },
+  "author": "devon casto",
+  "dependencies": {
+    // Add any dependencies here if needed in the future
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1" // Optional: for development server
+  }
+}
