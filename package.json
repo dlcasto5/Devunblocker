@@ -4,13 +4,21 @@
   "description": "A simple web app to search Google or unblock websites.",
   "main": "index.js",
   "scripts": {
-    "start": "live-server" // Or your preferred server command
+    "start": "live-server"
   },
   "author": "devon casto",
   "dependencies": {
-    // Add any dependencies here if needed in the future
+    "@nebula-services/bare-server-node": "^2.0.4",
+    "chalk": "^5.3.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-basic-auth": "^1.2.1",
+    "mime": "^4.0.4",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "live-server": "^1.2.1" // Optional: for development server
+    "live-server": "^1.2.1"
   }
 }
