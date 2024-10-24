@@ -60,7 +60,11 @@ function googleSearch(query) {
 }
 
 // Handle the unblock button click
-    function handleUnblock() {
+function handleUnblock() {
     const input = document.getElementById('searchInput').value;
-    unblockWebsite(input)
+    if (isValidUrl(input)) {
+        unblockWebsite(input);
+    } else {
+        console.error("Invalid URL provided for unblocking.");
+    }
 }
