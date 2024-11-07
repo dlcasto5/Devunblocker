@@ -98,7 +98,7 @@ server.on("listening", () => {
   const address = server.address();
   console.log(`[+] Starting Lunaar...`);
   console.log();
-  console.log(`[+] Made by The Parcoil Network:`);
+  console.log(`[+] re-created by Devon Casto:`);
   console.log();
   console.warn(`[+] https://github.com/Parcoil/lunaar.org`);
   console.log();
