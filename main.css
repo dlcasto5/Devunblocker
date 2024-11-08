@@ -3,7 +3,7 @@
 @import url("themes.css");
 @font-face {
   font-family: "Croogla 4F";
-  src: url(/./media/Croogla4F.ttf) format("truetype");
+  src: url(public/media/Croogla4F.ttf) format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: auto;
