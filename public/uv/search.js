@@ -1,56 +1,32 @@
-"use strict"; (async ({ window: win, document: doc }) => {
-	if (doc.readyState !== "complete") {
-		await new Promise((resolve) => {
-			const callback = () => {
-				if (doc.readyState === "complete") {
-					doc.removeEventListener("readystatechange", callback);
-					setTimeout(resolve, 500, null);
-				}
-			};
-			doc.addEventListener("readystatechange", callback, { passive: true });
-		});
-	}
+"use strict";
+/**
+ *
+ * @param {string} input
+ * @param {string} template Template for a search query.
+ * @returns {string} Fully qualified URL
+ */
+function search(input, template) {
+    try {
+        // input is a valid URL:
+        // eg: https://example.com, https://example.com/test?q=param
+        return new URL(input).toString();
+    } catch (err) {
+        // input was not a valid URL
+    }
 
-	const loc = win.location;
-	const body = doc.body;
+    try {
+        // input is a valid URL when http:// is added to the start:
+        // eg: example.com, https://example.com/test?q=param
+        const url = new URL(`http://${input}`);
+        // only if the hostname has a TLD/subdomain
+        if (url.hostname.includes(".")) return url.toString();
+    } catch (err) {
+        // input was not valid URL
+    }
 
-	const q = (new URLSearchParams(loc.search).get("q") || "").trim();
-	if (q.length === 0) {
-		loc.replace("/");
-		return;
-	}
+    // input may have been a valid URL, however the hostname was invalid
 
-	win.stop();
-	win.focus();
-	doc.title = q + " - NettleWeb Search";
-	body.innerHTML = "<div class=\"gcse-search\"></div>";
-
-	Object.defineProperty(win, "history", {
-		value: Object.freeze(Object.setPrototypeOf({
-			get state() {
-				return null;
-			},
-			get length() {
-				return 0;
-			},
-			get scrollRestoration() {
-				return "auto";
-			},
-			go: () => void 0,
-			back: () => void 0,
-			forward: () => void 0,
-			pushState: () => void 0,
-			replaceState: () => void 0
-		}, null)),
-		writable: false,
-		enumerable: true,
-		configurable: false
-	});
-
-	const e = doc.createElement("script");
-	e.type = "text/javascript";
-	e.src = "https://cse.google.com/cse.js?cx=6505c81d738124627";
-	e.async = true;
-	e.defer = true;
-	body.appendChild(e);
-})(window);
+    // Attempts to convert the input to a fully qualified URL have failed
+    // Treat the input as a search query
+    return template.replace("%s", encodeURIComponent(input));
+}
