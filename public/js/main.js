@@ -53,6 +53,13 @@ var navbarHTML = `
 
 `;
 
+var navbarDiv = document.createElement("div");
+navbarDiv.innerHTML = navbarHTML;
+
+var body = document.body;
+body.insertBefore(navbarDiv, body.firstChild);
+
+se();
 const texts = [
     "Welcome to Lunaar v5!",
     "Rip Nativegames",
