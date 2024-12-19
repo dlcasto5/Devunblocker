@@ -3,9 +3,9 @@
     "name": "1v1lol",
     "image": "logo.png",
     "url": "https://1v1.lol",
-    "new": false.
+    "new": false,
     "proxy": true,
-		"updated": true
+    "updated": true
   },
   {
     "name": "1v1space",
