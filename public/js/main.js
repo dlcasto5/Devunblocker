@@ -23,7 +23,7 @@ themeSelect.value = savedTheme;
 } catch (error) {}
 }
 
-fetch("../package.json")
+fetch("package.json")
 .then((response) => response.json())
 .then((data) => {
 const versionEl = document.getElementById("version");
